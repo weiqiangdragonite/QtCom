@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<settings>
+    <comsettings>
+        <comname></comname>
+        <baudrate>115200</baudrate>
+        <databits>8</databits>
+        <parity>None</parity>
+        <stopbits>1</stopbits>
+        <flow>OFF</flow>
+        <timeout>10</timeout>
+    </comsettings>
+    <fontsettings>
+        <fontname></fontname>
+        <fontsize></fontsize>
+        <bold>true</bold>
+        <italic>false</italic>
+        <underline>false</underline>
+    </fontsettings>
+</settings>

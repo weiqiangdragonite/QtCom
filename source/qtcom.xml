@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<settings>
+    <uart>
+        <comname>ttyS0</comname>
+        <baudrate>115200</baudrate>
+        <databits>8</databits>
+        <parity>None</parity>
+        <stopbits>1</stopbits>
+        <flow>OFF</flow>
+        <timeout>10</timeout>
+    </uart>
+    <text>
+        <fontname>Monospace</fontname>
+        <fontsize>16</fontsize>
+        <bold>false</bold>
+        <italic>false</italic>
+    </text>
+</settings>
