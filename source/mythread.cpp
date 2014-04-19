@@ -69,6 +69,8 @@ void MyThread::run()
         //msleep(500);
 
         QByteArray array;
+
+#if defined (Q_OS_UNIX)
         array = file.read(1);
         emit sendBinaryFileToComSignal(array);
         usleep(1);
@@ -77,6 +79,14 @@ void MyThread::run()
             stopped = true;
             break;
         }
+#elif defined (Q_OS_WIN)
+        array = file.readAll();
+        qDebug() << "array size = " << array.size();
+        emit sendBinaryFileToComSignal(array);
+        qDebug() << "file is the end now";
+        stopped = true;
+        break;
+#endif
     }
     file.close();
 

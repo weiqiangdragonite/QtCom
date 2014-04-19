@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <settings>
     <uart>
-        <comname>ttyS0</comname>
+        <comname>COM5</comname>
         <baudrate>115200</baudrate>
         <databits>8</databits>
         <parity>None</parity>
@@ -10,8 +10,8 @@
         <timeout>10</timeout>
     </uart>
     <text>
-        <fontname>Monospace</fontname>
-        <fontsize>16</fontsize>
+        <fontname>Courier</fontname>
+        <fontsize>14</fontsize>
         <bold>false</bold>
         <italic>false</italic>
     </text>

@@ -84,6 +84,8 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     //
     QByteArray byteArray;
 
+    qDebug() << "You press: " << event->key();
+
     // check the shift/ctrl key
     if (event->modifiers() == Qt::ShiftModifier) {
         shiftKey = true;
@@ -252,8 +254,11 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 void MainWindow::keyReleaseEvent(QKeyEvent *event)
 {
     //qDebug() << "mainwindow key release";
-    //if (event->type() == QEvent::KeyRelease) qDebug() << "key release";
+    //if (event->type() == QEvent::KeyRelease)
+    //    qDebug() << "key release";
 
+
+#if defined (Q_OS_UNIX)
     if (event->modifiers() == Qt::ShiftModifier) {
         shiftKey = false;
         qDebug() << "shift key release";
@@ -261,6 +266,15 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event)
         ctrlKey = false;
         qDebug() << "ctrl key release";
     }
+#elif defined (Q_OS_WIN)
+    if (event->key() == Qt::Key_Shift) {
+        shiftKey = false;
+        qDebug() << "shift key release";
+    } else if (event->key() == Qt::Key_Control) {
+        ctrlKey = false;
+        qDebug() << "ctrl key release";
+    }
+#endif
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)

@@ -112,10 +112,11 @@ void OptionDialog::initUartOptions()
     ui->portNameComboBox->addItem("ttyUSB3");
     // window port
 #elif defined (Q_OS_WIN)
-    ui->portNameComboBox->addItem("COM0");
     ui->portNameComboBox->addItem("COM1");
     ui->portNameComboBox->addItem("COM2");
     ui->portNameComboBox->addItem("COM3");
+    ui->portNameComboBox->addItem("COM4");
+    ui->portNameComboBox->addItem("COM5");
 #endif
 
 
@@ -172,6 +173,10 @@ void OptionDialog::setUartOptions()
     QFile file("../QtCom/qtcom.xml");
     bool isExists = file.exists();
 
+    qDebug() << "file exists: " << isExists;
+
+    QFileInfo info(file);
+    qDebug() << "path: " << info.absoluteFilePath();
 
     // the file not exist
     if (!isExists) {
@@ -188,30 +193,30 @@ void OptionDialog::setUartOptions()
         writer.writeStartDocument();
 
         writer.writeStartElement("settings");
-            writer.writeStartElement("uart");
+        writer.writeStartElement("uart");
 #if defined (Q_OS_UNIX)
-                writer.writeTextElement("comname", "ttyS0");
+        writer.writeTextElement("comname", "ttyS0");
 #elif defined (Q_OS_WIN)
-                writer.writeTextElement("comname", "COM0");
+        writer.writeTextElement("comname", "COM0");
 #endif
-                writer.writeTextElement("baudrate", "115200");
-                writer.writeTextElement("databits", "8");
-                writer.writeTextElement("parity", "None");
-                writer.writeTextElement("stopbits", "1");
-                writer.writeTextElement("flow", "OFF");
-                writer.writeTextElement("timeout", "10");
-            writer.writeEndElement();
+        writer.writeTextElement("baudrate", "115200");
+        writer.writeTextElement("databits", "8");
+        writer.writeTextElement("parity", "None");
+        writer.writeTextElement("stopbits", "1");
+        writer.writeTextElement("flow", "OFF");
+        writer.writeTextElement("timeout", "10");
+        writer.writeEndElement();
 
-            writer.writeStartElement("text");
+        writer.writeStartElement("text");
 #if defined (Q_OS_UNIX)
-                writer.writeTextElement("fontname", "Monospace");
+        writer.writeTextElement("fontname", "Monospace");
 #elif defined (Q_OS_WIN)
-                writer.writeTextElement("fontname", "Courier");
+        writer.writeTextElement("fontname", "Courier");
 #endif
-                writer.writeTextElement("fontsize", "12");
-                writer.writeTextElement("bold", "false");
-                writer.writeTextElement("italic", "false");
-            writer.writeEndElement();
+        writer.writeTextElement("fontsize", "12");
+        writer.writeTextElement("bold", "false");
+        writer.writeTextElement("italic", "false");
+        writer.writeEndElement();
         writer.writeEndElement();
 
         writer.writeEndDocument();
