@@ -117,6 +117,10 @@ void OptionDialog::initUartOptions()
     ui->portNameComboBox->addItem("COM3");
     ui->portNameComboBox->addItem("COM4");
     ui->portNameComboBox->addItem("COM5");
+    ui->portNameComboBox->addItem("COM6");
+    ui->portNameComboBox->addItem("COM7");
+    ui->portNameComboBox->addItem("COM8");
+    ui->portNameComboBox->addItem("COM9");
 #endif
 
 

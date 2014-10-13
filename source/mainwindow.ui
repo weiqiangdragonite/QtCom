@@ -22,7 +22,7 @@
      <x>0</x>
      <y>0</y>
      <width>598</width>
-     <height>19</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuSerial_Port">
@@ -51,6 +51,8 @@
      <string>Transfer</string>
     </property>
     <addaction name="actionBinary_File"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave_File"/>
    </widget>
    <addaction name="menuSerial_Port"/>
    <addaction name="menuTransfer"/>
@@ -97,6 +99,11 @@
   <action name="actionBinary_File">
    <property name="text">
     <string>Binary File</string>
+   </property>
+  </action>
+  <action name="actionSave_File">
+   <property name="text">
+    <string>Save File</string>
    </property>
   </action>
  </widget>

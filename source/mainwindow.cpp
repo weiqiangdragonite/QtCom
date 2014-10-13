@@ -7,6 +7,7 @@
 #include <QFileDialog>
 #include <QTime>
 #include <QProgressDialog>
+#include <QFileDialog>
 #include <QDebug>
 
 #include "mainwindow.h"
@@ -84,7 +85,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     //
     QByteArray byteArray;
 
-    qDebug() << "You press: " << event->key();
+    //qDebug() << "You press: " << event->key();
 
     // check the shift/ctrl key
     if (event->modifiers() == Qt::ShiftModifier) {
@@ -219,6 +220,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 
     // backspace
     else if (event->key() == Qt::Key_Backspace && sendBuffer != 0) {
+        //qDebug() << "backspace";
         byteArray.append(0x8);
 
         QTextCursor cursor = textEdit->textCursor();
@@ -789,4 +791,20 @@ void MainWindow::on_actionBinary_File_triggered()
     sendBinaryFileProgress = 0;
 
     return;
+}
+
+void MainWindow::on_actionSave_File_triggered()
+{
+    QFile file("E:/vbox_share/serial.txt");
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text)) {
+        QMessageBox::critical(this, tr("Open file error"),
+                              file.errorString(), QMessageBox::Ok);
+    }
+
+    file.write(textEdit->toPlainText().toAscii());
+
+    textEdit->clear();
+    sendBuffer = 0;
+
+    file.close();
 }
