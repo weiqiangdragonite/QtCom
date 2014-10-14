@@ -72,6 +72,10 @@ void OptionDialog::on_applyPushButton_clicked()
     emit resetFontReturn(myFont);
 
     // set port
+    // suggest do not write like this,
+    // you should use:
+    // comSettings.comName = ui->portNameComboBox->currentText();
+    // comSettings.baudRate = ...
     comSettings = {
         // com name
         ui->portNameComboBox->currentText(),
@@ -175,6 +179,7 @@ void OptionDialog::setUartOptions()
 {
     // read/write the file
     QFile file("../QtCom/qtcom.xml");
+    //QFile file("qtcom.xml");
     bool isExists = file.exists();
 
     qDebug() << "file exists: " << isExists;
@@ -227,6 +232,10 @@ void OptionDialog::setUartOptions()
 
         file.close();
     }
+
+    // sure the file is exist now
+    isExists = file.exists();
+    qDebug() << "file exists: " << isExists;
 
 
 
