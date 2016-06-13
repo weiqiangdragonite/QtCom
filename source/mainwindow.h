@@ -54,6 +54,8 @@ private slots:
 
     void on_actionBinary_File_triggered();
 
+    void on_actionSave_File_triggered();
+
 private:
     Ui::MainWindow *ui;
 

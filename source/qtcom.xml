@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <settings>
     <uart>
-        <comname>COM5</comname>
+        <comname>COM2</comname>
         <baudrate>115200</baudrate>
         <databits>8</databits>
         <parity>None</parity>
@@ -11,7 +11,7 @@
     </uart>
     <text>
         <fontname>Courier</fontname>
-        <fontsize>14</fontsize>
+        <fontsize>16</fontsize>
         <bold>false</bold>
         <italic>false</italic>
     </text>
